@@ -51,7 +51,7 @@ import numpy as np
 # myseed = 0
 # np.random.seed(myseed) # choose any int as your seed
 
-from coursework_world_spawner_lib.coursework_world_spawner import *
+from cw3_world_spawner_lib.coursework_world_spawner import *
 from cw3_world_spawner.srv import TaskSetup, TaskSetupResponse
 from cw3_world_spawner.srv import Task1Service, Task2Service, Task3Service
 from cw3_world_spawner.srv import Task2ServiceRequest

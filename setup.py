@@ -5,7 +5,7 @@ from catkin_pkg.python_setup import generate_distutils_setup
 
 # fetch values from package.xml
 setup_args = generate_distutils_setup(
-    packages=['coursework_world_spawner_lib'],
+    packages=['cw3_world_spawner_lib'],
     package_dir={'': 'src'},
 )
 
