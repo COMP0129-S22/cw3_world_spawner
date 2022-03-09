@@ -60,6 +60,7 @@ from cw3_world_spawner.srv import Task3ServiceRequest
 # ----- user defined coursework parameters ----- #
 
 # TESTING PARAMETERS YOU CAN CHANGE
+T1_N_BOXES = 5
 T2_N_BOXES = 7
 T2_STACK_SIZE = 3
 T3_N_BOXES = 13
@@ -222,7 +223,7 @@ class Task1(Task):
     """ Spawns trial course - feel free to edit """
     world_spawner.despawn_all(keyword='object',exceptions='golf')
     
-    chosen_colors = self.spawn_column(n_obj=5,
+    chosen_colors = self.spawn_column(n_obj=T1_N_BOXES,
                           column_name='object_stack',
                           xlims = T1_BOX_X_LIMS,
                           ylims = T1_BOX_Y_LIMS)
