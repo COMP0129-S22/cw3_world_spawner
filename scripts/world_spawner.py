@@ -1,14 +1,6 @@
 #!/usr/bin/python3
 
 """
-This is the master copy of this file. This is for staff use only - the students
-must not see this file.
-
-TO FIND ALL ITEMS THAT ARE NOT FOR STUDENTS, USE ctrl+f "not for students"
-"""
-
-
-"""
 This code contains the world spawner. This file accomplishes two main goals:
 
   1. Create and manage the objects in the gazebo world using the World() class
