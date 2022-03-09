@@ -1,5 +1,5 @@
-# The courswork 1 spawner package
-Sets up the first coursework in Gazebo, including all models and tasks.
+# The courswork 3 spawner package
+Sets up the third and final coursework in Gazebo, including all models and tasks.
 
 This package should be added to the comp0129_s22_robot repo on your machine as a submodule.
 
