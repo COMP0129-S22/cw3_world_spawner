@@ -55,12 +55,12 @@ from cw3_world_spawner.srv import Task3ServiceRequest
 T1_N_BOXES = 5
 T2_N_BOXES = 7
 T2_STACK_SIZE = 3
-T3_N_BOXES = 13
+T3_N_BOXES = 10
 T3_STACK_SIZE = 4
 T1_TEST_TIME = 120     # Testing time for T1 in sec, before timeout
 T2_TEST_TIME = 120     # Testing time for T2 in sec, before timeout
 T3_TEST_TIME = 360     # Testing time for T3 in sec, before timeout
-BOX_COLORS = {'purple': [0.8, 0.1, 0.8],       # Colours
+BOX_COLORS = {'purple': [0.8, 0.1, 0.8],       # Colours and their RGB values
               'red':    [0.8, 0.1, 0.1], 
               'blue':   [0.1, 0.1, 0.8],
               'yellow': [1.0, 1.0, 0.0],
@@ -223,6 +223,7 @@ class Task1(Task):
     self.goal_pos, self.goal_ori, self.goal_column = chosen_colors
     return
 
+
   def spawn_column(self, n_obj, xlims, ylims, column_name='object_stack', colors=None):
     """
     Spawn a pile of cubes one on top of another
@@ -257,6 +258,7 @@ class Task1(Task):
       chosen_colors.append(color)
        
     return pos, rotation, chosen_colors
+
 
   def reset_world(self): pass
 
@@ -300,8 +302,8 @@ class Task1(Task):
   def start_test_validation(self, validation_scenario):
     pass    
 
-class Task2(Task):
 
+class Task2(Task):
   def __init__(self, mode='coursework', validation_scenario=0):
     rospy.loginfo('================Starting Task2==============')
     Task.__init__(self,mode, validation_scenario)
@@ -431,6 +433,7 @@ class Task3(Task):
     rospy.loginfo('================Starting Task3==============')
     Task.__init__(self,mode, validation_scenario)
 
+
   def spawn_trial_course(self):
     """ Spawns trial course - feel free to edit """
     # Despawn old objects 
@@ -515,7 +518,7 @@ class Task3(Task):
                                                  z_rotation=rotation_rad)
 
     # make the demo stack
-    self.stack_rotation = np.random.randint(0, 90) * (np.pi/ 180.0)
+    self.goal_stack_rotation = np.random.randint(0, 90) * (np.pi/ 180.0)
     cube_height = 45e-3
     cube_start = 45e-3
     for i, goal_colour in enumerate(self.stack_goal_colours):
@@ -524,12 +527,11 @@ class Task3(Task):
                                                  xlims = [self.stack_location[0], self.stack_location[0]], 
                                                  ylims = [self.stack_location[1], self.stack_location[1]],
                                                  zlims = [cube_height * i + cube_start, cube_height * i + cube_start],
-                                                 z_rotation=self.stack_rotation)
+                                                 z_rotation=self.goal_stack_rotation)
 
     # define the goal stack location
     x = np.random.choice([0, 1])
     self.goal_loc = BASKET_LOCATIONS[x]
-    self.goal_stack_rotation = (np.pi / 180.0) * np.random.randint(0, 90)
 
     self.obstacle_locs = []
     OBSTACLE_HEIGHT = 160e-3
@@ -629,7 +631,7 @@ def run_coursework3(mode):
 if __name__ == "__main__":
 
   # create the world and run the coursework /task service
-  rospy.init_node('coursework1_wrapper')
+  rospy.init_node('coursework3_wrapper')
   world_spawner = WorldSpawner()
   world = World()
   run_coursework3(mode = 'coursework') # no need to change the mode
